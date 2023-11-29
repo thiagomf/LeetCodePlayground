@@ -56,3 +56,24 @@ struct Stack<T> {
     }
 }
 
+let result = carFleet(10, [10,8,0,5,3], [2,4,1,1,3])
+
+func carFleet(_ target: Int, _ position: [Int], _ speed: [Int]) -> Int {
+    
+    let cars = Array(zip(position, speed)).sorted{$0.0 < $1.0}
+    
+    var stack: [Double] = []
+    
+    for (p, s) in cars {
+        
+        let time = Double((target - p) / s)
+        
+        if !stack.isEmpty, time >= stack.last! {
+            stack.removeLast()
+        }
+        
+        stack.append(time)
+    }
+    
+    return stack.count
+}
