@@ -4,7 +4,8 @@
         <page name='backtrack and generic'/>
         <page name='backtrack'/>
         <page name='Arrays &amp; Hashing'/>
-        <page name=' Stack force brute'/>
+        <page name='Stack force brute'/>
         <page name='Stacks'/>
+        <page name='Two Pointers'/>
     </pages>
 </playground>
