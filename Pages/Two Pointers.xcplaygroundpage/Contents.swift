@@ -4,7 +4,6 @@ import Foundation
 
 let value = isPalindrome("KAIAK")
 
-
 func isPalindrome(_ s: String) -> Bool {
     
     let value = Array(s.lowercased().filter { $0.isLetter || $0.isNumber })

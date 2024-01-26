@@ -90,17 +90,21 @@ func topKFrequent(_ nums: [Int], _ k: Int) -> [Int] {
     return Array(result.prefix(k))
 }
 
+let val = productExceptSelf([1,2,3,4])
 func productExceptSelf(_ nums: [Int]) -> [Int] {
     
     var result = Array(repeating: 1, count: nums.count)
     
     for i in 1 ..< nums.count {
         result[i] = result[i - 1] * nums[i - 1]
+        print(result)
     }
     
     var suffix = 1
     for i in (0 ..< nums.count).reversed() {
+        print(" i = \(i) number = \(nums[i]) suffix = \(suffix)" )
         result[i] *= suffix
+        print(result)
         suffix *= nums[i]
     }
     
@@ -177,6 +181,8 @@ func isValidSudoku(_ board: [[Character]]) -> Bool {
     return true
 }
 
+let res01 = longestConsecutive([100,4,200,1,3,2])
+
 func longestConsecutive(_ nums: [Int]) -> Int {
     
     var set = Set(nums)
@@ -213,4 +219,33 @@ func isValid(_ s: String) -> Bool {
         }
     }
     return memory.isEmpty
+}
+
+let value01 = lengthOfLongestSubstring("abcabcbb")
+
+func lengthOfLongestSubstring(_ s: String) -> Int {
+    
+    var set = Set<Character>()
+    var left = 0
+    var longestSub = 0
+    let arrayOfS = Array(s)
+    
+    for rigth in 0..<arrayOfS.count {
+        
+        print("The value : \(arrayOfS[rigth])")
+        while set.contains(arrayOfS[rigth]) {
+            print("SET contains Rigth => \(arrayOfS[rigth])")
+            set.remove(arrayOfS[left])
+            print("SET contains Left => \(arrayOfS[left])")
+            left += 1
+            print("Set after removed: \(set)")
+        }
+    
+        set.insert(arrayOfS[rigth])
+        print("insert set => \(set) ")
+        longestSub = max(longestSub, rigth - left + 1)
+        print("-----------------------------------------")
+    }
+    
+    return longestSub
 }
